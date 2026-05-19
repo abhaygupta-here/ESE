@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   const fetchComplaints = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/complaints', {
+      const { data } = await axios.get('/api/complaints', {
         headers: { Authorization: `Bearer ${user.token}` },
         params: { category }
       });
@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   const handleSearch = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/complaints/search', {
+      const { data } = await axios.get('/api/complaints/search', {
         headers: { Authorization: `Bearer ${user.token}` },
         params: { location: search }
       });
@@ -39,7 +39,7 @@ const Dashboard = () => {
 
   const handleStatusUpdate = async (id, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/complaints/${id}`, { status }, {
+      await axios.put(`/api/complaints/${id}`, { status }, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       fetchComplaints();
@@ -51,7 +51,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this complaint?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/complaints/${id}`, {
+        await axios.delete(`/api/complaints/${id}`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         fetchComplaints();

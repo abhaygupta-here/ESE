@@ -27,7 +27,7 @@ const NewComplaint = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/complaints/ai/analyze', 
+      const { data } = await axios.post('/api/complaints/ai/analyze', 
         { title: formData.title, description: formData.description },
         { headers: { Authorization: `Bearer ${user.token}` } }
       );
@@ -43,7 +43,7 @@ const NewComplaint = () => {
 
   const handleSubmitFinal = async () => {
     try {
-      await axios.post('http://localhost:5000/api/complaints', 
+      await axios.post('/api/complaints', 
         { ...formData, aiAnalysis: aiResult },
         { headers: { Authorization: `Bearer ${user.token}` } }
       );
@@ -55,7 +55,7 @@ const NewComplaint = () => {
 
   const handleSubmitWithoutAI = async () => {
     try {
-      await axios.post('http://localhost:5000/api/complaints', 
+      await axios.post('/api/complaints', 
         formData,
         { headers: { Authorization: `Bearer ${user.token}` } }
       );
