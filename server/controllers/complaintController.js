@@ -112,7 +112,8 @@ exports.analyzeComplaint = async (req, res) => {
         "model": "google/gemini-2.5-flash",
         "messages": [
           {"role": "user", "content": prompt}
-        ]
+        ],
+        "max_tokens": 1000
       })
     });
 
